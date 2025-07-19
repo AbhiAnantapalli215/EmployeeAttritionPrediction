@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Attrition Prediction</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Employee Attrition Prediction</h1>
+        </header>
+        
+        <form action="{{ url_for('predict') }}" method="POST" autocomplete="on">
+            <!-- Age -->
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" name="Age" id="age" required min="18" max="80" placeholder="Enter age (18-80)">
+            </div>
+
+            <!-- Business Travel -->
+            <div class="form-group">
+                <label>Business Travel</label><br>
+                <div>
+                    <input type="radio" name="BusinessTravel" id="Rarely" value="Travel_Rarely"> 
+                    <label for="Rarely">Rarely</label><br>
+                    <input type="radio" name="BusinessTravel" id="Frequently" value="Travel_Frequently">
+                    <label for="Frequently">Frequently</label><br>
+                    <input type="radio" name="BusinessTravel" id="NoTravel" value="Non-Travel">
+                    <label for="NoTravel">No Travel</label><br>
+                </div>
+            </div>
+
+            <!-- Department -->
+            <div class="form-group">
+                <label>Department</label><br>
+                <div>
+                    <input type="radio" name="Department" id="Research" value="Research & Development">
+                    <label for="Research">Research & Development</label><br>
+                    <input type="radio" name="Department" id="HumanResources" value="Human Resources">
+                    <label for="HumanResources">Human Resources</label><br>
+                    <input type="radio" name="Department" id="Sales" value="Sales">
+                    <label for="Sales">Sales</label><br>
+                </div>
+            </div>
+
+            <!-- Distance From Home -->
+            <div class="form-group">
+                <label for="distance-home">Distance From Home</label>
+                <input type="number" name="DistanceFromHome" id="distance-home" required min="1" max="30" placeholder="1-30 km">
+            </div>
+
+            <!-- Education Field -->
+            <div class="form-group">
+                <label>Education Field</label><br>
+                <div>
+                    <input type="radio" name="EducationField" id="LifeSciences" value="Life Sciences">
+                    <label for="LifeSciences">Life Sciences</label><br>
+                    <input type="radio" name="EducationField" id="Medical" value="Medical">
+                    <label for="Medical">Medical</label><br>
+                    <input type="radio" name="EducationField" id="Marketing" value="Marketing">
+                    <label for="Marketing">Marketing</label><br>
+                    <input type="radio" name="EducationField" id="TechnicalDegree" value="Technical Degree">
+                    <label for="TechnicalDegree">Technical Degree</label><br>
+                    <input type="radio" name="EducationField" id="HumanResourcesField" value="Human Resources">
+                    <label for="HumanResourcesField">Human Resources</label><br>
+                    <input type="radio" name="EducationField" id="OtherField" value="Other">
+                    <label for="OtherField">Other</label><br>
+                </div>
+            </div>
+
+            <!-- Environment Satisfaction -->
+            <div class="form-group">
+                <label for="env-satisfaction">Environment Satisfaction</label>
+                <input type="number" name="EnvironmentSatisfaction" id="env-satisfaction" required min="1" max="4" placeholder="1-4">
+            </div>
+
+            <!-- Job Level -->
+            <div class="form-group">
+                <label for="job-level">Job Level</label>
+                <input type="number" name="JobLevel" id="job-level" required min="1" max="5" placeholder="1-5">
+            </div>
+
+            <!-- Job Role -->
+            <div class="form-group">
+                <label>Job Role</label><br>
+                <div>
+                    <input type="radio" name="JobRole" id="SalesExecutive" value="Sales Executive">
+                    <label for="SalesExecutive">Sales Executive</label><br>
+                    <input type="radio" name="JobRole" id="ResearchScientist" value="Research Scientist">
+                    <label for="ResearchScientist">Research Scientist</label><br>
+                    <input type="radio" name="JobRole" id="LabTechnician" value="Laboratory Technician">
+                    <label for="LabTechnician">Laboratory Technician</label><br>
+                    <input type="radio" name="JobRole" id="ManufacturingDirector" value="Manufacturing Director">
+                    <label for="ManufacturingDirector">Manufacturing Director</label><br>
+                    <input type="radio" name="JobRole" id="HealthcareRep" value="Healthcare Representative">
+                    <label for="HealthcareRep">Healthcare Representative</label><br>
+                    <input type="radio" name="JobRole" id="Manager" value="Manager">
+                    <label for="Manager">Manager</label><br>
+                    <input type="radio" name="JobRole" id="SalesRep" value="Sales Representative">
+                    <label for="SalesRep">Sales Representative</label><br>
+                    <input type="radio" name="JobRole" id="ResearchDirector" value="Research Director">
+                    <label for="ResearchDirector">Research Director</label><br>
+                    <input type="radio" name="JobRole" id="HumanResourcesRole" value="Human Resources">
+                    <label for="HumanResourcesRole">Human Resources</label><br>
+                </div>
+            </div>
+
+            <!-- Job Satisfaction -->
+            <div class="form-group">
+                <label for="job-satisfaction">Job Satisfaction</label>
+                <input type="number" name="JobSatisfaction" id="job-satisfaction" required min="1" max="4" placeholder="1-4">
+            </div>
+
+            <!-- Marital Status -->
+            <div class="form-group">
+                <label>Marital Status</label><br>
+                <div>
+                    <input type="radio" name="MaritalStatus" id="Married" value="Married">
+                    <label for="Married">Married</label><br>
+                    <input type="radio" name="MaritalStatus" id="Single" value="Single">
+                    <label for="Single">Single</label><br>
+                    <input type="radio" name="MaritalStatus" id="Divorced" value="Divorced">
+                    <label for="Divorced">Divorced</label><br>
+                </div>
+            </div>
+
+            <!-- Monthly Income -->
+            <div class="form-group">
+                <label for="monthly-income">Monthly Income</label>
+                <input type="number" name="MonthlyIncome" id="monthly-income" required min="1000" max="20000" placeholder="1000-20000">
+            </div>
+
+            <!-- Number of Companies Worked -->
+            <div class="form-group">
+                <label for="companies-worked">Number of Companies Worked</label>
+                <input type="number" name="NumCompaniesWorked" id="companies-worked" required min="0" max="9" placeholder="0-9">
+            </div>
+
+            <!-- Over Time -->
+            <div class="form-group">
+                <label>Over Time</label><br>
+                <div>
+                    <input type="radio" name="OverTime" id="Yes" value="Yes">
+                    <label for="Yes">Yes</label><br>
+                    <input type="radio" name="OverTime" id="No" value="No">
+                    <label for="No">No</label><br>
+                </div>
+            </div>
+
+            <!-- Relationship Satisfaction -->
+            <div class="form-group">
+                <label for="relationship-satisfaction">Relationship Satisfaction</label>
+                <input type="number" name="RelationshipSatisfaction" id="relationship-satisfaction" required min="1" max="4" placeholder="1-4">
+            </div>
+
+            <!-- Stock Option Level -->
+            <div class="form-group">
+                <label for="stock-option">Stock Option Level</label>
+                <input type="number" name="StockOptionLevel" id="stock-option" required min="0" max="3" placeholder="0-3">
+            </div>
+
+            <!-- Total Working Years -->
+            <div class="form-group">
+                <label for="total-working-years">Total Working Years</label>
+                <input type="number" name="TotalWorkingYears" id="total-working-years" required min="0" max="40" placeholder="0-40">
+            </div>
+
+            <!-- Work Life Balance -->
+            <div class="form-group">
+                <label for="work-life-balance">Work Life Balance</label>
+                <input type="number" name="WorkLifeBalance" id="work-life-balance" required min="1" max="4" placeholder="1-4">
+            </div>
+
+            <!-- Years at the Company -->
+            <div class="form-group">
+                <label for="years-at-company">Years at the Company</label>
+                <input type="number" name="YearsAtCompany" id="years-at-company" required min="0" max="40" placeholder="0-40">
+            </div>
+
+            <!-- Years Since Last Promotion -->
+            <div class="form-group">
+                <label for="years-since-promotion">Years Since Last Promotion</label>
+                <input type="number" name="YearsSinceLastPromotion" id="years-since-promotion" required min="0" max="15" placeholder="0-15">
+            </div>
+
+            <!-- Years with Current Manager -->
+            <div class="form-group">
+                <label for="years-with-manager">Years with Current Manager</label>
+                <input type="number" name="YearsWithCurrManager" id="years-with-manager" required min="0" max="17" placeholder="0-17">
+            </div>
+
+            <button type="submit">Submit Prediction</button>
+        </form>
+    </div>
+</body>
+</html>
